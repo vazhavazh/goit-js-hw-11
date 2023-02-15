@@ -33,11 +33,13 @@ async function fetchPictures(keyword, page) {
         console.log(error);
     }
 }
+
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 async function getPictures(query) {
     const data = await fetchPictures(query);
+    console.log(data);
     // if (data === undefined) {
-    //     return Notify.failure("We're sorry, but you've reached the end of search results.")
+    //     return Notify.failure("Sorry, there are no images matching your search query. Please try again.")
     // }
     if (data.hits.length === 0) {
         return Notify.failure("We're sorry, but you've reached the end of search results.")
@@ -64,7 +66,7 @@ function handleSubmit(e) {
     e.preventDefault()
     const inputValue = e.target.elements.searchQuery.value.trim();
     if (!inputValue || inputValue === searchQuery) {
-        return
+        return Notify.failure("Sorry, there are no images matching your search query. Please try again.")
     }
     
     searchQuery = inputValue;
