@@ -41,13 +41,15 @@ async function getPictures(query) {
     // if (data === undefined) {
     //     return Notify.failure("Sorry, there are no images matching your search query. Please try again.")
     // }
+    if (data.total === 0) {
+        return Notify.failure("Sorry, there are no images matching your search query. Please try again.")
+    }
+    
     if (data.hits.length === 0) {
         return Notify.failure("We're sorry, but you've reached the end of search results.")
     }
 
-    if (data.total === 0) {
-        return Notify.failure("Sorry, there are no images matching your search query. Please try again.")
-    }
+   
     const photoCards = data.hits
     // console.log(photoCards);
 
