@@ -5,12 +5,14 @@ import axios from 'axios';
 
 const searchForm = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery')
+const btnLoadMore = document.querySelector('.load-more')
 // console.log(searchForm);
 const API = '33620588-dd89b1b0713208c28d32b322f';
 axios.defaults.baseURL = 'https://pixabay.com/api'
 
 let searchQuery = '';
 let pageToFetch = 1;
+
 // ==========================================================================================
 async function fetchPictures(keyword, page) {
     try {
@@ -26,6 +28,7 @@ async function fetchPictures(keyword, page) {
             },
         });
         return data;
+        
     } catch (error) {
         console.log(error);
     }
@@ -33,35 +36,48 @@ async function fetchPictures(keyword, page) {
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 async function getPictures(query) {
     const data = await fetchPictures(query);
-    console.log(data);
+    if (data === undefined) {
+        return Notify.failure("We're sorry, but you've reached the end of search results.")
+    }
 
     if (data.total === 0) {
-        return Notify.failure('Sorry, there are no images matching your search query. Please try again.')
+        return Notify.failure("Sorry, there are no images matching your search query. Please try again.")
     }
     const photoCards = data.hits
     // console.log(photoCards);
 
     renderPictures(photoCards)
     pageToFetch += 1;
+    if (data.total > 1 && pageToFetch !== data.total) {
+        btnLoadMore.classList.remove('invisible-js');
+        
+    }
+  
     // observer.observe(guard);
 }
 
 // ==============================================================
 function handleSubmit(e) {
     e.preventDefault()
-    const inputValue = e.target.elements.searchQuery.value;
+    const inputValue = e.target.elements.searchQuery.value.trim();
     if (!inputValue || inputValue === searchQuery) {
-        return Notify.failure('Sorry, there are no images matching your search query. Please try again.')
+        return
     }
     
     searchQuery = inputValue;
 
     pageToFetch = 1;
     gallery.innerHTML = "";
+    btnLoadMore.classList.add('invisible-js')
     getPictures(searchQuery, pageToFetch);
     searchForm.reset();
 
 }
+
+btnLoadMore.addEventListener('click', () => {
+    btnLoadMore.classList.add('invisible-js')
+    getPictures(searchQuery, pageToFetch)
+})
 
 searchForm.addEventListener('submit', handleSubmit);
 
