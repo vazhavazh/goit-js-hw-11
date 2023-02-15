@@ -33,28 +33,106 @@
 //     display: flex;
 // }
 
+
+
+
+.load-more {
+    
+display: block;
+  background: rgb(255, 166, 42);
+  border-radius: 4px;
+  border: none;
+  min-width: 200px;
+  height: 50px;
+  margin: 0 auto;
+
+  // padding: 10px 24px;
+  // padding-top: 10px;
+  // padding-right: 32px;
+  // padding-bottom: 10px;
+  // padding-left: 32px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    color: rgb(7, 250, 23);
+    box-shadow: 0px 4px 4px rgba(226, 198, 198, 0.15);
+    cursor: pointer;
+  }
+
+
+}
+
+
+.main-body {
+    background-color: rgb(64, 64, 186);
+    padding-top: 30px;
+}
+
+.search-form {
+display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    gap: 20;
+        margin-bottom: 30px;
+}
+.input-field {
+     padding-left: 16px;
+    display: block;
+    min-width: 450px;
+    height: 50px;
+    outline: rgba(0,0,0,0);
+    cursor: text;
+    // color: rgb(255, 166, 42); ;
+    // // background-color: rgb(255, 166, 42);
+    border: 1px solid rgba(255,255,255,.3);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+    border-radius: 4px;
+    transition: background-color cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+
+
+.search-btn {
+display: block;
+  background: rgb(255, 166, 42);
+  border-radius: 4px;
+  border: none;
+  min-width: 200px;
+  height: 50px;
+  margin: 0 auto;
+
+  // padding: 10px 24px;
+  // padding-top: 10px;
+  // padding-right: 32px;
+  // padding-bottom: 10px;
+  // padding-left: 32px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    color: rgb(7, 250, 23);
+    box-shadow: 0px 4px 4px rgba(226, 198, 198, 0.15);
+    cursor: pointer;
+  }
+
+}
+
 .invisible-js {
     display: none;
 }
 
-.main-body {
-    background-color: blue;
-    padding-top: 30px;
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    -moz-column-gap: 30px;
+    column-gap: 30px;
+    row-gap: 30px;
 }
 
-.input-field {
-display: block;
-margin: 0 auto;
-min-width: 350px;
-min-height: 50px;
-border-radius: 30px;
-margin-bottom: 20px;
-
-
-
-}
-
-.search-btn {
-    display: block;
-margin: 0 auto;
+.info {
+    display: flex;
+    justify-content: space-around;
 }

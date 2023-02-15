@@ -36,7 +36,10 @@ async function fetchPictures(keyword, page) {
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 async function getPictures(query) {
     const data = await fetchPictures(query);
-    if (data === undefined) {
+    // if (data === undefined) {
+    //     return Notify.failure("We're sorry, but you've reached the end of search results.")
+    // }
+    if (data.hits.length === 0) {
         return Notify.failure("We're sorry, but you've reached the end of search results.")
     }
 
