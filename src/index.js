@@ -54,11 +54,11 @@ function handleSubmit(e) {
         return Notify.failure('Sorry, there are no images matching your search query. Please try again.')
     }
     
-    queryToFetch = inputValue;
+    searchQuery = inputValue;
 
     pageToFetch = 1;
     gallery.innerHTML = "";
-    getPictures(queryToFetch, pageToFetch);
+    getPictures(searchQuery, pageToFetch);
     searchForm.reset();
 
 }
